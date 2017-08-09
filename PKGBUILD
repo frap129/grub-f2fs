@@ -22,7 +22,7 @@ _pkgname="grub"
 pkgname="${_pkgname}-f2fs"
 
 pkgdesc="GNU GRand Unified Bootloader (2) - GIT Version with F2FS Support"
-pkgver=2.02.beta3.16.gb524fa2
+pkgver=2.02.50.ge8ab5a1a9
 pkgrel=1
 url="https://www.gnu.org/software/grub/"
 arch=('x86_64' 'i686')
@@ -58,7 +58,7 @@ source=("grub::git+git://git.sv.gnu.org/grub.git#branch=master"
         "http://ftp.gnu.org/gnu/unifont/unifont-${_UNIFONT_VER}/unifont-${_UNIFONT_VER}.bdf.gz.sig"
         'grub-10_linux-detect-archlinux-initramfs.patch'
         'grub-add-GRUB_COLOR_variables.patch'
-        'grub-add-f2fs-support-v8.patch'
+        'grub-add-f2fs-support-2017_05.patch'
         '60_memtest86+'
         'grub.default'
         'grub.cfg')
@@ -69,7 +69,7 @@ sha1sums=('SKIP'
           'SKIP'
           '7ffd63c38d74f969f72e38fea3500345c5b968b2'
           'c03d2ea83aa6a44dc383fbf67c29c20469e57f1b'
-          '13ef175e398f56af052330331a54b853e0f29031'
+          'e00300d140907cc05510ddbe505c512dd1e655f2'
           '10e30eb68fb95c86301112ac95c5b7515413152a'
           '55cf103b60f405bd37d44dd24357dedfff0214ee'
           '5b7fcb0718a23035c039eb2fda9e088bb13ae611')
@@ -96,7 +96,7 @@ prepare() {
 
 	msg "Patch to enable f2fs filesystem support"
 	## Based on https://lists.gnu.org/archive/html/grub-devel/2016-03/msg00080.html
-	patch -Np1 -i "${srcdir}/grub-add-f2fs-support-v8.patch"
+	patch -Np1 -i "${srcdir}/grub-add-f2fs-support-2017_05.patch"
 	echo
 	
 	msg "Fix DejaVuSans.ttf location so that grub-mkfont can create *.pf2 files for starfield theme"
